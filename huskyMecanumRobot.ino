@@ -331,7 +331,12 @@ void loop() {
   last_time = now;
   button.loop();
   if (lox.isRangeComplete()) {
-    if (lox.readRange() < MIN_IN_MM) stop();
+    if (lox.readRange() < MIN_IN_MM) {
+      digitalWrite(MF_AI2, LOW);
+      digitalWrite(MF_BI2, LOW);
+      digitalWrite(MR_AI2, LOW);
+      digitalWrite(MR_BI2, LOW);
+    }
   }
   if (mode == 0) {
     stop();
