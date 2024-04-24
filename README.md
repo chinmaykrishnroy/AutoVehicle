@@ -1,55 +1,81 @@
-# Autonomous Vehicle
+# Autonomous Vehicle Project
 
-Welcome to the Autonomous Vehicle Project Repository! This project aims to develop a fully autonomous vehicle capable of navigating its environment, avoiding obstacles, and reaching its destination without human intervention. This README.md file provides an overview of the project, including hardware requirements, safety features, modes of operation, control algorithms, calibration procedures, potential usages, and instructions for getting started.
+Welcome to the Autonomous Vehicle project repository! This project focuses on developing an autonomous vehicle capable of navigating its environment, avoiding obstacles, and executing various modes of operation. Below is an overview of the project's hardware, safety features, modes of operation, control algorithms, PID calibration, potential usages, and instructions for getting started.
 
 ## Hardware Requirements
 
-- Raspberry Pi or similar microcontroller
-- Motorized vehicle chassis
-- Motor drivers (e.g., H-bridge or motor controller)
-- Sensors (e.g., ultrasonic sensors, LiDAR, cameras)
-- Power source (e.g., batteries)
-- Communication modules (e.g., WiFi, Bluetooth)
-- Miscellaneous components (e.g., wires, connectors)
+- Master Microcontroller: Raspberry Pi Pico W
+  Functions as the central control unit, orchestrating all components and executing programmed tasks with efficiency and precision.
+- Dual-Camera Setup
+  Consists of two high-resolution cameras strategically positioned for comprehensive surveillance and object detection capabilities.
+  Empowered by the Kendryte K210 AI chip for real-time processing of computer vision algorithms, enhancing the robot's perception and decision-making abilities.
+- Mecanum Wheels
+  Four specialized wheels arranged in a configuration that enables omnidirectional movement, allowing the robot to move smoothly and precisely in any direction.
+  Provides unparalleled agility and maneuverability, essential for navigating complex environments and executing intricate tasks.
+- Power System
+  Lead-Acid 12V Battery: Provides reliable power supply to the robot, ensuring long-lasting operation and mobility in various environments.
+  BO Motors (200 rpm): Drives the movement of the mecanum wheels, offering efficient motor control and precise maneuvering capabilities.
+- HuskyLens
+  Features a built-in camera and Kendryte K210 microcontroller, facilitating real-time learning and adaptation to new objects and environments.
+  Enhances the robot's versatility and intelligence by dynamically expanding its capabilities based on real-world interactions.
+- Motor Driver Module: DRV8833
+  Two-channel motor driver module responsible for controlling the movement of the robot's mecanum wheels, ensuring smooth and efficient operation.
+- Distance Sensors
+  HC-SR04 Ultrasonic Sensor: Positioned at the front of the robot, accurately measures distances to objects, enabling obstacle detection and collision avoidance.
+  VL53L0X LiDAR Sensor: Integrated at the rear of the robot, provides precise distance measurements for enhanced spatial awareness and navigation capabilities.
+- Buck Converter: LM2596-Based
+  Efficiently regulates voltage levels, ensuring stable power supply to the components and optimizing energy consumption for prolonged operation.
+- Safety Switch and Control Interface
+  Incorporates a safety switch for manual intervention and mode selection, allowing users to switch between autonomous and manual control modes effortlessly.
+  Features a user-friendly interface, including HTML/CSS-based controls for intuitive interaction with the robot's functionalities over WiFi.
 
-## Safety Features
+This comprehensive hardware setup equips the robot with advanced capabilities for perception, movement, intelligence, and power management, making it a versatile and powerful platform for various robotics applications.
 
-- **Obstacle Detection**: Sensors are used to detect obstacles and prevent collisions.
-- **Emergency Stop Button**: A physical or software-based emergency stop button is implemented to halt the vehicle's movement in case of emergencies.
-- **Fail-Safe Mechanism**: In the event of system failure or loss of communication, the vehicle is programmed to execute predetermined safety protocols, such as stopping or returning to a safe location.
+## Key Features
+
+- Efficient Surveillance: The dual-camera setup enables efficient surveillance, tracking, and monitoring of objects in real time, enhancing security and situational awareness.
+- Real-Time Learning: With the HuskyLens's real-time learning feature, the robot dynamically adapts to new objects and environments, expanding its capabilities on the fly.
+- Omnidirectional Movement: Mecanum wheels facilitate fluid and precise movement in any direction, enabling agile navigation and maneuverability in complex environments.
+- Over-the-Internet Control: Remote control and monitoring capabilities via WiFi empower users to interact with the robot from anywhere, enhancing versatility and accessibility.
+- Safety and Collision Avoidance: Ultrasonic and LiDAR distance sensors ensure safe navigation by providing accurate distance measurements and collision detection capabilities.
+- Versatile Applications: From security and surveillance to industrial automation and healthcare assistance, the robot's versatility makes it suitable for a wide range of fields and applications.
+
+## Potential Applications
+
+- Security and Surveillance: Ideal for patrolling, monitoring, and securing facilities, homes, and public spaces.
+- Industrial Automation: Streamlines workflows, automates tasks, and improves efficiency in industrial settings.
+- Healthcare Assistance: Assists healthcare professionals, patients, and caregivers in hospitals, clinics, and assisted living facilities.
+- Agriculture and Environmental Monitoring: Contributes to precision agriculture and environmental monitoring efforts.
+- Education and Research: Inspires innovation and discovery in robotics, computer vision, and AI research in academic institutions and laboratories.
+- Retail and Customer Service: Enhances customer service and shopping experiences in retail environments.
+- Search and Rescue Operations: Aids search and rescue teams in exploring hazardous environments and detecting survivors.
+- Entertainment and Hospitality: Provides interactive experiences and personalized services in entertainment venues, hotels, and theme parks.
+- Military and Defense: Supports reconnaissance, surveillance, and perimeter security operations in military applications.
+- Smart Home Integration: Integrates with smart home systems to automate tasks and monitor home security.
 
 ## Modes of Operation
 
-1. **Autonomous Mode**: The vehicle operates autonomously, using onboard sensors and algorithms to navigate its environment and reach its destination.
-2. **Manual Mode**: Users can switch to manual control mode to manually drive the vehicle using a remote control or smartphone application.
-3. **Mixed Control Mode**: This mode combines autonomous and manual control, allowing users to intervene and provide guidance when necessary.
+### Autonomous Mode (Mode 1)
 
-## Control Algorithms
+- Fully autonomous operation, leveraging computer vision and decision-making algorithms.
+- Capable of following lines, tracking human faces, and recognizing taught objects.
+- Navigates independently without human intervention, performing tasks based on detected objects.
 
-- **Path Planning**: Algorithms are implemented to plan the vehicle's route from its current location to the desired destination while avoiding obstacles.
-- **PID Control**: Proportional-Integral-Derivative (PID) control is used to regulate the vehicle's speed and direction, ensuring smooth and stable movement.
-- **Computer Vision**: Computer vision algorithms are employed to detect and recognize objects in the vehicle's environment, providing input for navigation and decision-making.
+### Manual Mode (Mode 2)
 
-## Calibration Procedures
+- Remote control via smartphone or computer over WiFi.
+- Users can control movement, camera angles, and other functions in real time.
+- Enables precise control and maneuvering for specific tasks or environments.
 
-- **Sensor Calibration**: Sensors are calibrated to ensure accurate distance measurements and object detection.
-- **PID Tuning**: PID controller parameters are tuned to optimize the vehicle's performance, taking into account factors such as weight, terrain, and desired speed.
+### Mixed Mode (Mode 3)
 
-## Potential Usages
+- Combines elements of autonomous and manual control.
+- Performs programmed tasks autonomously when known objects are detected.
+- Pauses and awaits manual commands in the absence of detected objects or in unfamiliar situations.
 
-- **Transportation**: Autonomous vehicles can be used for transportation of goods and passengers in various industries, including logistics, agriculture, and public transportation.
-- **Surveillance**: Autonomous vehicles equipped with cameras and sensors can be deployed for surveillance and security purposes, patrolling designated areas and monitoring for intruders or anomalies.
-- **Exploration**: Autonomous vehicles can explore and map unknown or hazardous environments, such as disaster zones or extraterrestrial landscapes.
+### Idle Mode (Mode 0)
 
-## Getting Started
-
-To get started with this project, follow these steps:
-
-1. **Assemble Hardware**: Connect the necessary components as per the provided schematics and instructions.
-2. **Install Software**: Install the required libraries and dependencies on the microcontroller and any other computing devices used in the project.
-3. **Configure Settings**: Configure the vehicle's parameters, such as speed limits, navigation algorithms, and communication protocols.
-4. **Test and Calibration**: Test the vehicle's functionality in a controlled environment and calibrate sensors and controllers as needed for optimal performance.
-5. **Deployment**: Deploy the vehicle in real-world scenarios and continue to monitor and fine-tune its performance based on feedback and observations.
+- Standby
 
 ## Contributing
 
@@ -65,3 +91,4 @@ This project is licensed under the [MIT License](LICENSE).
 ![20240416_163551](https://github.com/chinmaykrishnroy/Autonomous_Mecanum_Robot/assets/65699140/7c1defc4-f598-414e-950c-edf725594a4f)
 ![20240416_163133](https://github.com/chinmaykrishnroy/Autonomous_Mecanum_Robot/assets/65699140/7ce9f9bf-5bf0-49df-abb6-6743a5493c79)
  ## Videos:
+https://www.linkedin.com/posts/chinmaykrishnroy_robotics-artificialintelligence-innovation-activity-7186109686750859264-0gqj?utm_source=share&utm_medium=member_desktop
